@@ -1,31 +1,41 @@
-import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+import { Airplay } from "@tamagui/lucide-icons";
+import { Button, Heading, View } from "tamagui";
+import { router } from "expo-router";
+import { isStoryBookEnabled } from "../storybook";
 
 export default function TabOneScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+    <View flex={1} alignItems="center" justifyContent="center">
+      <Heading size={"$10"} color={"violet"}>
+        Tab One
+      </Heading>
+
+      <Button
+        color={"violet"}
+        backgroundColor={"black"}
+        alignSelf="center"
+        icon={Airplay}
+        mt={10}
+        size="$6"
+      >
+        Button
+      </Button>
+
+      {isStoryBookEnabled ? (
+        <Button
+          color={"violet"}
+          onPress={() => {
+            router.replace("/storybook");
+          }}
+          backgroundColor={"black"}
+          alignSelf="center"
+          icon={Airplay}
+          mt={10}
+          size="$6"
+        >
+          Go to Storybook
+        </Button>
+      ) : null}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});

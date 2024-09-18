@@ -1,4 +1,4 @@
-{
+module.exports = {
   "expo": {
     "name": "ReactNativeExpoRouterTamaguiStorybook",
     "slug": "ReactNativeExpoRouterTamaguiStorybook",
@@ -31,6 +31,9 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+     "storybookEnabled": process.env.STORYBOOK_ENABLED
     }
   }
 }
